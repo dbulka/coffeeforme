@@ -1,4 +1,3 @@
-import sqlalchemy
 import mysql.connector
 from mysql.connector import Error
 import logging
@@ -26,6 +25,18 @@ class MySQLConnector(DBConnector):
     """
     Connector for exection common MySQL database methods
     """
+    INSTANCE = None
+    connection = None
+    cursor = None
+
+    def __new__(cls):
+        """
+        A singleton implementation for mysql connector
+        :return: MySQLConnector instance
+        """
+        if not cls.INSTANCE:
+            cls.INSTANCE = super().__new__(cls)
+        return cls.INSTANCE
 
     def connect(self):
         """
@@ -84,8 +95,11 @@ class MySQLConnector(DBConnector):
         except Error as er:
             logging.getLogger(__name__).error("Error while closing channel %s" %er)
 
-
-
-
+# conn = MySQLConnector()
+# conn.connect()
+# conn.get_cursor()
+# conn.execute_query('select * from beverage_type;')
+# conn.execute_query('select * from beverage_type;')
+# print(conn.get_results())
 
 

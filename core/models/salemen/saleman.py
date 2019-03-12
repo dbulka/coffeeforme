@@ -1,23 +1,17 @@
 from core.models.users.User import User
+from core.controllers.sale_controller.sale_controller import SaleController
 
 class Saleman(User):
     """
     'saleman' user position class
     """
 
-    def choose_beverage_type(self):
-        """
-        choose beverage type
-        :return: choosen beverage
-        """
-        pass
-
-    def add_ingredients(self):
+    def add_ingredients(self, choice):
         """
         choose ingredients type
         :return: choosen ingredients
         """
-        pass
+
 
     def get_beverage_price(self):
         """
@@ -40,4 +34,5 @@ class Saleman(User):
         """
         pass
 
-    
+# sm = Saleman('John')
+# sm.show_beverage_type()
