@@ -1,5 +1,6 @@
 from utils.db_service import MySQLConnector
-import sqlalchemy
+from mysql.connector import Error
+import logging
 
 
 class SaleController(object):
@@ -12,17 +13,26 @@ class SaleController(object):
         initialize new SaleController
         """
         MySQLConnector().connect()
-        # self.cursor = MySQLConnector().get_cursor()
+        self.cursor = MySQLConnector().get_cursor()
 
-    def show_salemen(self):
+
+
+    def get_beverage_types_list(self):
         """
-        show 'salemen' table
-        :return: table of salemen and ids
+        get from database list of beverage types
+        :return: list beverage and cost
         """
-        metadata = sqlalchemy.MetaData()
-        for t in metadata.sorted_tables:
-            print(t.name)
+        try:
+            MySQLConnector().execute_query('use coffeeforme;')
+            logging.getLogger(__name__).info('use coffeeforme database')
+            MySQLConnector().execute_query('select * from beverage_types;')
+            logging.getLogger(__name__).info('select all from beverage_types table')
+        except Error as er:
+            logging.getLogger(__name__).error("Something went wrong with database %s" % er)
+        return MySQLConnector().get_results()
 
 
-cl = SaleController()
-cl.show_salemen()
+# cl = SaleController()
+# print(cl.get_beverage_types_list())
+
+
