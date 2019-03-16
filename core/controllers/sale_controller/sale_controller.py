@@ -45,6 +45,6 @@ class SaleController(object):
 
 
 # cl = SaleController()
-# print(cl.get_beverage_ingredients_list())
+# print(cl.get_beverage_types_list())
 
 

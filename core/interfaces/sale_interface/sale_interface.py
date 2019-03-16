@@ -30,7 +30,7 @@ class SaleInterface(object):
         """
         resp = True
         while resp:
-            choosen_beverage = input('Please enter number of beverage type #')
+            choosen_beverage = input('Please enter number of beverage type: #')
             try:
                 if int(choosen_beverage) in type_numbers:
                     resp = False
@@ -69,12 +69,13 @@ class SaleInterface(object):
                 if int(choosen_ingredient) in ingredients_numbers:
                     resp = False
                 else:
-                    print('Enter number attentive!')
+                    print('Enter number correctly!')
             except:
-                print('Enter number attentive!')
+                print('Enter number correctly!')
         logging.getLogger(__name__).info('Bavarage ingredient %s was choose ' %choosen_ingredient)
         return choosen_ingredient
 
-sm = SaleInterface()
-st = sm.show_beverage_ingredients()
-sm.choose_beverage_ingredient(st)
+# sm = SaleInterface()
+# st = sm.show_beverage_ingredients()
+# ing = sm.choose_beverage_ingredient(st)
+# print(type(ing))
