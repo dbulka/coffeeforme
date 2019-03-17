@@ -7,10 +7,45 @@ class SaleInterface(object):
     user interface of saleman
     """
 
-    def show_beverage_type(self):
+    def show_salemen_list(self):
         """
-        show beverage type
-        :return: show beverage
+        show salemen list
+        :return: salemen list
+        """
+        salemen_list = SaleController().get_salemen_list()
+        salemen_numbers = []
+        print("""
+                      Please choose a saleman:
+                      """)
+        for saleman in salemen_list:
+            print('id #{0} - {1} {2}'.format(saleman[0], saleman[1], saleman[2]))
+        for i in range(len(salemen_list)):
+            salemen_numbers.append(i + 1)
+        return salemen_numbers
+
+    def choose_saleman(self, salemen_numbers):
+        """
+        choose salemen
+        :return: salemen id
+        """
+        resp = True
+        while resp:
+            choosen_saleman = input('Please enter id number of saleman: #')
+            try:
+                if int(choosen_saleman) in salemen_numbers:
+                    resp = False
+                else:
+                    print('Enter number attentive!')
+            except:
+                print('Enter number attentive!')
+        logging.getLogger(__name__).info('Saleman id %s was choose ' % choosen_saleman)
+        return choosen_saleman
+
+
+    def show_beverage_types(self):
+        """
+        show beverage types
+        :return: beverage types
         """
         beverage_type_list = SaleController().get_beverage_types_list()
         type_numbers = []
@@ -75,7 +110,6 @@ class SaleInterface(object):
         logging.getLogger(__name__).info('Bavarage ingredient %s was choose ' %choosen_ingredient)
         return choosen_ingredient
 
-# sm = SaleInterface()
-# st = sm.show_beverage_ingredients()
-# ing = sm.choose_beverage_ingredient(st)
-# print(type(ing))
+sm = SaleInterface()
+st = sm.show_salemen_list()
+sm.choose_saleman(st)
