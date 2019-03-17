@@ -15,6 +15,20 @@ class SaleController(object):
         MySQLConnector().connect()
         self.cursor = MySQLConnector().get_cursor()
 
+    def get_salemen_list(self):
+        """
+        get list of 'salemen' table (database)
+        :return: salemen list
+        """
+        try:
+            MySQLConnector().execute_query('use coffeeforme;')
+            logging.getLogger(__name__).info('use coffeeforme database')
+            MySQLConnector().execute_query('select * from salemen;')
+            logging.getLogger(__name__).info('select all from salemen table')
+        except Error as er:
+            logging.getLogger(__name__).error("Something went wrong with database %s" % er)
+        return MySQLConnector().get_results()
+
     def get_beverage_types_list(self):
         """
         get from database list of beverage types
@@ -44,7 +58,7 @@ class SaleController(object):
         return MySQLConnector().get_results()
 
 
-# cl = SaleController()
-# print(cl.get_beverage_types_list())
+cl = SaleController()
+print(cl.get_salemen_list())
 
 
