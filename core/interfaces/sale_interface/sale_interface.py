@@ -41,6 +41,21 @@ class SaleInterface(object):
         logging.getLogger(__name__).info('Saleman id %s was choose ' % choosen_saleman)
         return choosen_saleman
 
+    def get_saleman(self):
+        """
+        choose way "add new saleman" or "get existing"
+        """
+        resp = True
+        while resp:
+            print('Do you want add new saleman or get existing?')
+            responce = input('Enter \'new\' or \'exist\' :')
+            if responce == 'new':
+                resp = False
+            elif responce == 'exist':
+                resp = False
+            else:
+                print('Please enter answer correctly.')
+        return responce
 
     def show_beverage_types(self):
         """
@@ -109,7 +124,4 @@ class SaleInterface(object):
                 print('Enter number correctly!')
         logging.getLogger(__name__).info('Bavarage ingredient %s was choose ' %choosen_ingredient)
         return choosen_ingredient
-#
-# sm = SaleInterface()
-# st = sm.show_salemen_list()
-# sm.choose_saleman(st)
+
