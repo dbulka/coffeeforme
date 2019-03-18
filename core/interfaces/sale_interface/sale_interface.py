@@ -26,7 +26,7 @@ class SaleInterface(object):
     def choose_saleman(self, salemen_numbers):
         """
         choose salemen
-        :return: salemen id
+        :return: saleman id for control the beverage process
         """
         resp = True
         while resp:
@@ -109,7 +109,7 @@ class SaleInterface(object):
                 print('Enter number correctly!')
         logging.getLogger(__name__).info('Bavarage ingredient %s was choose ' %choosen_ingredient)
         return choosen_ingredient
-
-sm = SaleInterface()
-st = sm.show_salemen_list()
-sm.choose_saleman(st)
+#
+# sm = SaleInterface()
+# st = sm.show_salemen_list()
+# sm.choose_saleman(st)
