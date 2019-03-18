@@ -48,6 +48,9 @@ class AppInterface(object):
         logging.getLogger(__name__).info('Beverage type is #%s' %self.beverage_type)
         self.additianal_ingredients = app.add_ingredients()
         logging.getLogger(__name__).info('Additianal ingredients: %s' % self.additianal_ingredients)
+        beverage_type = self.beverage_type
+        additianal_ingredients = self.additianal_ingredients
+        return beverage_type, additianal_ingredients
 
     def get_beverage_price(self):
         """
@@ -62,6 +65,6 @@ class AppInterface(object):
             additional_ingredients += ingredient_cost
         print('additional ingredient cost - %s$' %additional_ingredients)
         beverage_price = beverage_type_cost + additional_ingredients
-        print('beverage cost - %s$' %beverage_price)
+        # print('beverage cost - %s$' %beverage_price)
         logging.getLogger(__name__).info('Beverage price is %s$' %beverage_price)
         return beverage_price
