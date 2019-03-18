@@ -43,7 +43,7 @@ class AppInterface(object):
         :return:
         """
         app = AppInterface()
-        self.beverage_type_list = self.beverage_maker.show_beverage_type()
+        self.beverage_type_list = self.beverage_maker.show_beverage_types()
         self.beverage_type = self.beverage_maker.choose_beverage_type(self.beverage_type_list)
         logging.getLogger(__name__).info('Beverage type is #%s' %self.beverage_type)
         self.additianal_ingredients = app.add_ingredients()
@@ -65,14 +65,3 @@ class AppInterface(object):
         print('beverage cost - %s$' %beverage_price)
         logging.getLogger(__name__).info('Beverage price is %s$' %beverage_price)
         return beverage_price
-
-
-
-
-
-
-
-
-app = AppInterface()
-app.create_beverage()
-app.get_beverage_price()

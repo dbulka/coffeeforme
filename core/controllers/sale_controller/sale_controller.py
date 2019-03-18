@@ -30,7 +30,7 @@ class SaleController(object):
             id_new_saleman = MySQLConnector().get_results()[-1][0]
         except Error as er:
             logging.getLogger(__name__).error("Something went wrong with database %s" % er)
-        return print(id_new_saleman)
+        return id_new_saleman
 
     def get_salemen_list(self):
         """
@@ -74,11 +74,5 @@ class SaleController(object):
             logging.getLogger(__name__).error("Something went wrong with database %s" % er)
         return MySQLConnector().get_results()
 
-
-
-# name = input('name:')
-# surname = input('surname:')
-# sl = SaleController()
-# sl.add_new_saleman(name,surname)
 
 
