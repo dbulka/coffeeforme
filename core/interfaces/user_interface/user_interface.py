@@ -14,18 +14,15 @@ class UserInterface(object):
               Welcome to CoffeeForMe - cafe managment application
                   """)
         resp = True
-        responces = ('m', 's')
         while resp:
-            response = input('Please choose your role: Sale or Manager. [S/M]:').lower()
-            if response in responces:
+            response = input('Please write your role - Salesman or Manager : ').lower()
+            if response == 'manager':
                 resp = False
-                if response == 's':
-                    user_role = 'saleman'
-                else:
-                    user_role = 'manager'
+            elif response == 'salesman':
+                resp = False
             else:
                 print('Enter answer correctly!')
-        logging.getLogger(__name__).info('User role is %s' % user_role)
+        logging.getLogger(__name__).info('User role is %s' % response)
+        return response
 
-ui = UserInterface()
-ui.select_user_role()
+
