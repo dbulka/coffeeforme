@@ -10,6 +10,7 @@ Step 2: Open requirements.txt and install essential libraries
 Step 3: Start using "Coffeeforme" utility by run /coffeeforme.py
 
 Discription:
+/.gitignore - includer objects which must not push to github
 /bills - route for saving separete bill(file) with sale details
 /core/controllers - includes controllers for manager & salesman roles and application related to commandline arguments
 /core/interfaces - include interfaces for user & salesman roles and application which show info related to commandline arguments
