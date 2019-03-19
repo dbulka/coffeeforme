@@ -65,6 +65,5 @@ class AppInterface(object):
             additional_ingredients += ingredient_cost
         print('additional ingredient cost - %s$' %additional_ingredients)
         beverage_price = beverage_type_cost + additional_ingredients
-        # print('beverage cost - %s$' %beverage_price)
         logging.getLogger(__name__).info('Beverage price is %s$' %beverage_price)
         return beverage_price
