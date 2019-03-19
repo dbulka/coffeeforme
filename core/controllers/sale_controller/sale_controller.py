@@ -14,6 +14,8 @@ class SaleController(object):
         """
         MySQLConnector().connect()
         self.cursor = MySQLConnector().get_cursor()
+        MySQLConnector().execute_query('use coffeeforme;')
+        logging.getLogger(__name__).info('use coffeeforme database;')
 
     def add_new_saleman(self, name, surname):
         """
@@ -21,8 +23,6 @@ class SaleController(object):
         :return: saleman id for control the beverage process
         """
         try:
-            MySQLConnector().execute_query('use coffeeforme;')
-            logging.getLogger(__name__).info('use coffeeforme database;')
             MySQLConnector().execute_query('insert into salemen(name,surname) values ("{0}","{1}");'.format(name,surname))
             logging.getLogger(__name__).info('add new salemen(name:{0}, surname:{1})'.format(name,surname))
             print('Saleman Name: {0}, Surname: {1} was created'.format(name,surname))
@@ -38,8 +38,6 @@ class SaleController(object):
         :return: salemen list
         """
         try:
-            MySQLConnector().execute_query('use coffeeforme;')
-            logging.getLogger(__name__).info('use coffeeforme database')
             MySQLConnector().execute_query('select * from salemen;')
             logging.getLogger(__name__).info('select all from salemen table')
         except Error as er:
@@ -52,8 +50,6 @@ class SaleController(object):
         :return: list beverage and cost
         """
         try:
-            MySQLConnector().execute_query('use coffeeforme;')
-            logging.getLogger(__name__).info('use coffeeforme database')
             MySQLConnector().execute_query('select * from beverage_types;')
             logging.getLogger(__name__).info('select all from beverage_types table')
         except Error as er:
@@ -66,8 +62,6 @@ class SaleController(object):
         :return: list ingredients and cost
         """
         try:
-            MySQLConnector().execute_query('use coffeeforme;')
-            logging.getLogger(__name__).info('use coffeeforme database')
             MySQLConnector().execute_query('select * from beverage_ingredients;')
             logging.getLogger(__name__).info('select all from beverage_ingredients table')
         except Error as er:

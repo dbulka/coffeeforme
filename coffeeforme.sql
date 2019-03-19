@@ -74,16 +74,12 @@ DROP TABLE IF EXISTS `orders`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `saleman` int(11) NOT NULL,
-  `beverage` int(11) NOT NULL,
-  `ingredients` varchar(50) NOT NULL,
+  `saleman_id` int(11) NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `orders_ibfk_1` (`saleman`),
-  KEY `orders_ibfk_2` (`beverage`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`saleman`) REFERENCES `salemen` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`beverage`) REFERENCES `beverage_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `orders_ibfk_1` (`saleman_id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`saleman_id`) REFERENCES `salemen` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,6 +88,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,1,1),(2,1,1.2),(3,2,2.2),(4,1,1.5),(5,1,1.05),(6,1,1.5),(7,1,1),(8,1,1),(9,1,1),(10,1,1),(11,20,1.7),(12,2,1.6),(13,21,1.1);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,9 +101,10 @@ DROP TABLE IF EXISTS `salemen`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `salemen` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(15) DEFAULT NULL,
+  `surname` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,6 +113,7 @@ CREATE TABLE `salemen` (
 
 LOCK TABLES `salemen` WRITE;
 /*!40000 ALTER TABLE `salemen` DISABLE KEYS */;
+INSERT INTO `salemen` VALUES (1,'Tom','Iriskin'),(2,'Tim','Bagins'),(17,'Tom','Cat'),(18,'Tim','Ivanov'),(19,'Git','Hub'),(20,'Ton','Not'),(21,'Masha','Bulka');
 /*!40000 ALTER TABLE `salemen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-10 22:30:43
+-- Dump completed on 2019-03-19 23:04:57
