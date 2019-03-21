@@ -2,3 +2,4 @@ mysql-connector-python
 logging-py
 enum-compat
 terminaltables
+pytest
